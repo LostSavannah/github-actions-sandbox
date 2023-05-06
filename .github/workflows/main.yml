@@ -1,0 +1,15 @@
+name: Publish
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-01
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          rm -r /var/www/php/portfolio-angular/* || true
+          cp -r dummy/* /var/www/php/portfolio-angular
